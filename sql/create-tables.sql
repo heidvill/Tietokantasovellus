@@ -1,5 +1,5 @@
 create table kayttaja(
-idtunnut serial primary key,
+idtunnus serial primary key,
 tunnus varchar(20) unique not null,
 salasana varchar(20) not null
 );
