@@ -1,18 +1,12 @@
    
-<head>
-    	<link href="../css/bootstrap.css" rel="stylesheet">
-	<link href="../css/bootstrap-theme.css" rel="stylesheet">
-	<link href="../css/main.css" rel="stylesheet">
-        <title>Etusivu</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-</head>
+
         
 <body>
         <ul class="nav nav-tabs">
-    		<li class="active"><a href="#">Elokuvalista</a></li>
-   		<li><a href="omat_tiedot.php">Muokkaa tietojasi</a></li>
-   		<li><a href="haku.php">Hae elokuvia</a></li>
-   		<li><a href="..">Kirjaudu ulos</a></li>
+    		<li <?php if ($nykyinenSivu == 'etusivu'): ?>class="active"<?php endif; ?>><a href="etusivu.php">Elokuvalista</a></li>
+   		<li <?php if ($nykyinenSivu == 'omatTiedot'): ?>class="active"<?php endif; ?>><a href="omat_tiedot.php">Muokkaa tietojasi</a></li>
+   		<li <?php if ($nykyinenSivu == 'haku'): ?>class="active"<?php endif; ?>><a href="haku.php">Hae elokuvia</a></li>
+   		<li><a href="index.html">Kirjaudu ulos</a></li>
   	</ul>
   	
 
