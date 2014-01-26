@@ -5,3 +5,4 @@ drop table kategoria;
 drop table henkilo;
 drop table elokuva;
 drop table kayttaja;
+

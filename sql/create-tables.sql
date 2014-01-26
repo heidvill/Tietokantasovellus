@@ -10,8 +10,8 @@ nimi varchar(100) not null,
 kesto integer,
 ikaraja varchar(3),
 vuosi integer,
-kieli varchar(100)
-maa varchar(100)
+kieli varchar(100),
+maa varchar(100),
 nahty varchar(20)
 );
 

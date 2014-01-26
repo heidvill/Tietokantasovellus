@@ -21,7 +21,7 @@
     	<br>
     	<br>
     	
-    <form class="form-horizontal" role="form" action="lomake.html" method="POST">
+    <form class="form-horizontal" role="form" action="etusivu.php" method="POST">
       <div class="form-group">
         <label for="elokuva" class="col-md-2 control-label">Elokuvan nimi</label>
         <div class="col-md-10">
