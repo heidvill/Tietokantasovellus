@@ -23,27 +23,27 @@
     	
     <form class="form-horizontal" role="form" action="lomake.html" method="POST">
       <div class="form-group">
-        <label for="inputEmail1" class="col-md-2 control-label">Elokuvan nimi</label>
+        <label for="elokuva" class="col-md-2 control-label">Elokuvan nimi</label>
         <div class="col-md-10">
-          <input type="email" class="form-control" id="inputEmail1" name="email" placeholder="nimi">
+          <input type="text" class="form-control" id="elokuva" name="elokuva" placeholder="nimi">
         </div>
       </div>
       <div class="form-group">
-        <label for="inputEmail1" class="col-md-2 control-label">Näyttelijä</label>
+        <label for="naytttelija" class="col-md-2 control-label">Näyttelijä</label>
         <div class="col-md-10">
-          <input type="email" class="form-control" id="inputEmail1" name="email" placeholder="näyttelijä">
+          <input type="text" class="form-control" id="nayttelija1" name="nayttelija" placeholder="näyttelijä">
         </div>
       </div>
       <div class="form-group">
-        <label for="inputEmail1" class="col-md-2 control-label">Ohjaaja</label>
+        <label for="ohjaaja" class="col-md-2 control-label">Ohjaaja</label>
         <div class="col-md-10">
-          <input type="email" class="form-control" id="inputEmail1" name="email" placeholder="ohjaaja">
+          <input type="text" class="form-control" id="ohjaaja" name="ohjaaja" placeholder="ohjaaja">
         </div>
       </div>
       <div class="form-group">
-        <label for="inputEmail1" class="col-md-2 control-label">Kategoria</label>
+        <label for="kategoria" class="col-md-2 control-label">Kategoria</label>
         <div class="col-md-10">
-          <input type="email" class="form-control" id="inputEmail1" name="email" placeholder="kategoria">
+          <input type="text" class="form-control" id="kategoria" name="kategoria" placeholder="kategoria">
         </div>
       </div>
       <div class="form-group">

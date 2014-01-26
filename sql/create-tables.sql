@@ -11,6 +11,8 @@ kesto integer,
 ikaraja varchar(3),
 vuosi integer,
 kieli varchar(100)
+maa varchar(100)
+nahty varchar(20)
 );
 
 create table henkilo(
@@ -20,7 +22,7 @@ nimi varchar(50)
 
 create table kategoria(
 idtunnus serial primary key,
-nimi varchar(20)
+nimi varchar(30)
 );
 
 create table ohjaus(

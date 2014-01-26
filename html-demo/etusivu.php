@@ -43,21 +43,21 @@
           <td>Hobbitti 2</td>
           <td>2013</td>
           <td>kyllä</td>
-          <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-wrench"></span> Muokkaa/poista</button></td>
+          <td><form action="elokuvan_tiedot.php"><button type="submit" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-wrench"></span> Muokkaa/poista</button></form></td>
         </tr>
         <tr>
           <td>2</td>
           <td>Ironman 3</td>
           <td>2013</td>
           <td>kyllä</td>
-          <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-wrench"></span> Muokkaa/poista</button></td>
+          <td><form action="elokuvan_tiedot.php"><button type="submit" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-wrench"></span> Muokkaa/poista</button></form></td>
         </tr>
         <tr>
           <td>3</td>
           <td>Kuninkaan puhe</td>
           <td>2010</td>
           <td>Ei</td>
-          <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-wrench"></span> Muokkaa/poista</button></td>
+          <td><form action="elokuvan_tiedot.php"><button type="submit" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-wrench"></span> Muokkaa/poista</button></form></td>
         </tr>
       </tbody>
     </table>
