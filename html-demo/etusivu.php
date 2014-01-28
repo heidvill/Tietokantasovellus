@@ -22,7 +22,9 @@
 	<br>
 	<br>
 	Sinulla on 3 elokuvaa tallennettuna tietokantaasi.
-	
+	<br>
+	<br>
+	<a href="elokuvan_tiedot.php">Lisää uusi elokuva</a>
 	</div>
 	
 	<div class="container">

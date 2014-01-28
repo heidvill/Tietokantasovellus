@@ -1,11 +1,13 @@
 <?php
+require_once "yhteys.php";
 class Kayttaja {
   
   private $id;
   private $tunnus;
-  private $password;
+  private $salasana;
 
   public function __construct($id, $tunnus, $salasana) {
+  //public function __construct()
     $this->id = $id;
     $this->tunnus = $tunnus;
     $this->salasana = $salasana;
@@ -16,7 +18,8 @@ class Kayttaja {
   
   public static function getKayttajat() {
    $sql = "SELECT idtunnus,tunnus, salasana from kayttaja";
-  $kysely = annaYhteys()->prepare($sql); $kysely->execute();
+  $kysely = annaYhteys()->prepare($sql); 
+  $kysely->execute();
     
   $tulokset = array();
   foreach($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
@@ -30,6 +33,28 @@ class Kayttaja {
   
   public function getTunnus(){
   return $this->tunnus;
+  }
+  
+  public function getSalasana(){
+  return $this->salasana;
+  }
+
+  public static function getKayttajaTunnuksilla($kayttaja, $salasana) {
+	$sql = "SELECT idtunnus, tunnus, salasana from kayttaja where tunnus = ? AND salasana = ? LIMIT 1";
+	$kysely = annaYhteys()->prepare($sql);
+	$kysely->execute(array($kayttaja, $salasana));
+
+	$tulos = $kysely->fetchObject();
+	if ($tulos == null){
+		return null;
+	} else {
+		$kayttaja = new Kayttaja();
+		$kayttaja->id = $tulos->id;
+		$kayttaja->tunnut = $tulos->tunnus;
+		$kayttaja->salasana = $tulos->salasana;
+
+		return $kayttaja;
+	}
   }
   
 }
