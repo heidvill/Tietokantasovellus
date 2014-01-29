@@ -7,7 +7,7 @@
     	<?php if (!empty($data->virhe)): ?>
   		<div class="alert alert-danger"><?php echo $data->virhe; ?><br><br></div>
 	<?php endif; ?>
-    <form class="form-horizontal" role="form" action="doLogin.php" method="POST">
+    <form class="form-horizontal" role="form" action="etusivu.php" method="POST">
       <div class="form-group">
         <label for="tunnus" class="col-md-2 control-label">Käyttäjätunnus</label>
         <div class="col-md-10">

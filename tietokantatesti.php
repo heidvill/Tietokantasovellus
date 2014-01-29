@@ -1,14 +1,14 @@
 
 <?php
 require_once "libs/yhteys.php"; 
-require_once "libs/kayttaja.php";
+require_once "libs/models/kayttaja.php";
 
 
 //Lista asioista array-tietotyyppiin laitettuna:
 $lista = Kayttaja::getKayttajat();
 ?><!DOCTYPE HTML>
 <html>
-  <head><title>Otsikko</title></head>
+  <head><title>Käyttäjät</title></head>
   <body>
     <h1>Käyttäjät</h1>
     <ul>

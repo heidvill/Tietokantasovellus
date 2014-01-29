@@ -1,5 +1,5 @@
 <?php
-require_once "yhteys.php";
+require_once "libs/yhteys.php";
 class Kayttaja {
   
   private $id;
@@ -17,18 +17,18 @@ class Kayttaja {
   /* Tähän gettereitä ja settereitä */
   
   public static function getKayttajat() {
-   $sql = "SELECT idtunnus,tunnus, salasana from kayttaja";
-  $kysely = annaYhteys()->prepare($sql); 
-  $kysely->execute();
+  	$sql = "SELECT idtunnus,tunnus, salasana from kayttaja";
+  	$kysely = annaYhteys()->prepare($sql); 
+  	$kysely->execute();
     
-  $tulokset = array();
-  foreach($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
-    $kayttaja = new Kayttaja($tulos->idtunnus, $tulos->tunnus, $tulos->salasana); 
-    //$array[] = $muuttuja; lisää muuttujan arrayn perään. 
-    //Se vastaa melko suoraan ArrayList:in add-metodia.
-    $tulokset[] = $kayttaja;
-  }
-  return $tulokset;
+  	$tulokset = array();
+  	foreach($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
+    		$kayttaja = new Kayttaja($tulos->idtunnus, $tulos->tunnus, $tulos->salasana); 
+    		//$array[] = $muuttuja; lisää muuttujan arrayn perään. 
+    		//Se vastaa melko suoraan ArrayList:in add-metodia.
+    		$tulokset[] = $kayttaja;
+  	}
+  	return $tulokset;
   }
   
   public function getTunnus(){
@@ -48,10 +48,10 @@ class Kayttaja {
 	if ($tulos == null){
 		return null;
 	} else {
-		$kayttaja = new Kayttaja();
-		$kayttaja->id = $tulos->id;
-		$kayttaja->tunnut = $tulos->tunnus;
-		$kayttaja->salasana = $tulos->salasana;
+		$kayttaja = new Kayttaja($tulos->idtunnus, $tulos->tunnus, $tulos->salasana);
+		//$kayttaja->id = $tulos->id;
+		//$kayttaja->tunnut = $tulos->tunnus;
+		//$kayttaja->salasana = $tulos->salasana;
 
 		return $kayttaja;
 	}

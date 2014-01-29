@@ -4,20 +4,25 @@
 <body>
   <div class="container">
     <h1>Kirjaudu</h1>
-    <form class="form-horizontal" role="form" action="etusivu.php" method="POST">
+    	<?php if (!empty($data->virhe)): ?>
+  		<div class="alert alert-danger"><?php echo $data->virhe; ?><br><br></div>
+	<?php endif; ?>
+    <form class="form-horizontal" role="form" action="doLogin.php" method="POST">
       <div class="form-group">
-        <label for="nimi" class="col-md-2 control-label">Käyttäjätunnus</label>
+        <label for="tunnus" class="col-md-2 control-label">Käyttäjätunnus</label>
         <div class="col-md-10">
-          <input type="text" class="form-control" id="nimi" name="tunnus" placeholder="Käyttäjätunnus">
+          <input type="text" class="form-control" name="tunnus" value="<?php if(!empty($data->kayttaja)): ?><?php echo $data->kayttaja; ?><?php endif; ?>" placeholder="Käyttäjätunnus" />
         </div>
       </div>
       <div class="form-group">
-        <label for="inputPassword1" class="col-md-2 control-label">Salasana</label>
+        <label for="salasana" class="col-md-2 control-label">Salasana</label>
         <div class="col-md-10">
-          <input type="password" class="form-control" id="inputPassword1" name="password" placeholder="Salasana">
+          <input type="password" class="form-control" name="salasana" placeholder="Salasana" />
         </div>
       </div>
-      <div class="form-group">
+      <br>
+    <!--  
+    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
           <div class="checkbox">
             <label>
@@ -26,14 +31,14 @@
           </div>
         </div>
       </div>
+      -->
       <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
           <button type="submit" class="btn btn-default">Kirjaudu sisään</button>
         </div>
       </div>
     </form>
+    
   </div>
 </body>
 </html>
-
-

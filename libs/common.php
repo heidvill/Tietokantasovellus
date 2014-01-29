@@ -1,19 +1,21 @@
 <?php
-	//session_start();
+	session_start();
 	function naytaNakyma($sivu, $data = array()) {
 		$data = (object)$data;
-		require "html-demo/$sivu";
+		require "views/$sivu";
 		exit();
 	}
 
-	//function lahetaSivulle($sivu) {
-	//header('Location:' $sivu);
-	//}
+	function lahetaSivulle($sivu) {
+	header("Location: $sivu");
+	//header('Location: '.$sivu);
+	}
+	
 	function onkoKirjautunut(){
-		if($_SESSION['kayttaja'] == null) {
-			return false;
+		if(empty($_SESSION['kayttaja']) || $_SESSION['kayttaja'] == null) {
+			lahetaSivulle("index.php");
+			exit();
 		} else {
-		
 			return true;
 		}
 	}

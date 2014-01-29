@@ -1,7 +1,7 @@
 <?php
-ini_set('display_errors', 1);
+//ini_set('display_errors', 1);
 
-require_once 'libs/kayttaja.php';
+require_once 'libs/models/kayttaja.php';
 require_once 'libs/common.php';
 	
 	if(empty($_POST["tunnus"])) {
@@ -20,9 +20,8 @@ require_once 'libs/common.php';
 	$kayttaja = Kayttaja::getKayttajaTunnuksilla($tunnus, $salasana);
 	
 	if($kayttaja != null) {
-		session_start();
-		$_SESSION['kayttaja'] = $kayttaja;		
-		header('Location: html-demo/etusivu.php');
+		$_SESSION['kayttaja'] = $kayttaja;
+		lahetaSivulle("etusivu.php");
 	} else {
 		naytaNakyma("login.php", array(
 			'kayttaja' => $tunnus, 

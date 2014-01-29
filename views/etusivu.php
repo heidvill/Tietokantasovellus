@@ -1,32 +1,6 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  	
-	<link href="../css/bootstrap.css" rel="stylesheet">
-	<link href="../css/bootstrap-theme.css" rel="stylesheet">
-	<link href="../css/main.css" rel="stylesheet">
-
-<!--  
-	<link href="css/bootstrap.css" rel="stylesheet">
-	<link href="css/bootstrap-theme.css" rel="stylesheet">
-	<link href="css/main.css" rel="stylesheet">
-        -->
-        <title>etusivu</title>
-        
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-</head>
-
-<?php
-
-	$nykyinenSivu = 'etusivu';
-	include("valikko.php");
-	
-?>
-
-	<div class="container">
-  		<h1>YMDb - Your Movie Database</h1>
-   			Hei X!
+<div class="container">
+  	<h1>YMDb - Your Movie Database</h1>
+   	Hei X!
 	<br>
 	<br>
 	Sinulla on 3 elokuvaa tallennettuna tietokantaasi.
@@ -52,14 +26,14 @@
           <td>1</td>
           <td>Hobbitti 2</td>
           <td>2013</td>
-          <td>kyllä</td>
+          <td>Kyllä</td>
           <td><form action="elokuvan_tiedot.php"><button type="submit" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-wrench"></span> Muokkaa/poista</button></form></td>
         </tr>
         <tr>
           <td>2</td>
           <td>Ironman 3</td>
           <td>2013</td>
-          <td>kyllä</td>
+          <td>Kyllä</td>
           <td><form action="elokuvan_tiedot.php"><button type="submit" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-wrench"></span> Muokkaa/poista</button></form></td>
         </tr>
         <tr>
@@ -72,8 +46,3 @@
       </tbody>
     </table>
   </div>
-
-	
-</body>
-
-</html>
