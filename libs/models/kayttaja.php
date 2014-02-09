@@ -38,6 +38,10 @@ class Kayttaja {
   public function getSalasana(){
   return $this->salasana;
   }
+  
+  public function getKayttajaId(){
+  return $this->id;
+  }
 
   public static function getKayttajaTunnuksilla($kayttaja, $salasana) {
 	$sql = "SELECT idtunnus, tunnus, salasana from kayttaja where tunnus = ? AND salasana = ? LIMIT 1";

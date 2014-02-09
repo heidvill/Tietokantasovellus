@@ -13,4 +13,4 @@ function annaYhteys() {
 }
 
 //Funktiota voi käyttää näin
-$kysely = annaYhteys()->prepare("SELECT 1");
+//$kysely = annaYhteys()->prepare("SELECT 1");

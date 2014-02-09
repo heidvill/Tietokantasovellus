@@ -12,7 +12,9 @@ ikaraja varchar(3),
 vuosi integer,
 kieli varchar(100),
 maa varchar(100),
-nahty varchar(20)
+nahty varchar(20),
+kayttaja integer,
+foreign key(kayttaja) references kayttaja
 );
 
 create table henkilo(

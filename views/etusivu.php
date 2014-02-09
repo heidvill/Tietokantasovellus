@@ -1,48 +1,36 @@
 <div class="container">
-  	<h1>YMDb - Your Movie Database</h1>
-   	Hei X!
-	<br>
-	<br>
-	Sinulla on 3 elokuvaa tallennettuna tietokantaasi.
-	<br>
-	<br>
-	<a href="elokuvan_tiedot.php">Lisää uusi elokuva</a>
-	</div>
+	<h1>YMDb - Your Movie Database</h1>
+	<p>Hei X! </p>
+	<p>Sinulla on 3 elokuvaa tallennettuna tietokantaasi.</p>
+	<a href="lisaa_elokuva.php">Lisää uusi elokuva</a>
+</div>
 	
-	<div class="container">
-    <h1>Elokuvasi</h1>
+<div class="container">
+    <h1>Elokuvat</h1>
+    
+    <?php if (!empty($data->tyhjaHaku)): ?>
+  		<div class="alert alert-danger"><?php echo $data->tyhjaHaku; ?><br><br></div>
+  		
+	<?php endif; ?>
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>#</th>
           <th>Elokuvan nimi</th>
           <th>Julkaisuvuosi</th>
           <th>Nähty</th>
-          <th>Muokkaa</th>
+          <th> </th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Hobbitti 2</td>
-          <td>2013</td>
-          <td>Kyllä</td>
-          <td><form action="elokuvan_tiedot.php"><button type="submit" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-wrench"></span> Muokkaa/poista</button></form></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Ironman 3</td>
-          <td>2013</td>
-          <td>Kyllä</td>
-          <td><form action="elokuvan_tiedot.php"><button type="submit" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-wrench"></span> Muokkaa/poista</button></form></td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Kuninkaan puhe</td>
-          <td>2010</td>
-          <td>Ei</td>
-          <td><form action="elokuvan_tiedot.php"><button type="submit" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-wrench"></span> Muokkaa/poista</button></form></td>
-        </tr>
+
+      <?php foreach($data->tulos as $rivi=>$tieto):?>
+     	<tr>
+     		<td> <?php echo htmlspecialchars($tieto['nimi']); ?> </td>
+     		<td> <?php echo htmlspecialchars($tieto['vuosi']); ?></td>
+     		<td> <?php echo htmlspecialchars($tieto['nahty']); ?></td>
+     		<td><form action="elokuvan_tiedot.php"><button type="submit" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-wrench"></span> Muokkaa/poista</button></form></td>
+     	</tr>
+     	<?php endforeach; ?>
       </tbody>
     </table>
   </div>

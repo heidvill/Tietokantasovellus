@@ -3,6 +3,7 @@
 
 require_once 'libs/models/kayttaja.php';
 require_once 'libs/common.php';
+require_once 'libs/models/elokuva.php';
 	
 	if(empty($_POST["tunnus"])) {
 	naytaNakyma("login.php", array('virhe' => "Kirjautuminen epäonnistui! Et antanut käyttäjätunnusta.",));
@@ -21,6 +22,12 @@ require_once 'libs/common.php';
 	
 	if($kayttaja != null) {
 		$_SESSION['kayttaja'] = $kayttaja;
+		//$data = array();
+		//$data[]=elokuva::haeKaikki();
+		//$nykyinenSivu = 'etusivu';
+		//$hakuTulos = elokuva::haeKaikki();
+		
+		//naytaNakyma("etusivu.php", array('tulos' => $hakuTulos));
 		lahetaSivulle("etusivu.php");
 	} else {
 		naytaNakyma("login.php", array(
