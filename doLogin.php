@@ -6,16 +6,17 @@ require_once 'libs/common.php';
 require_once 'libs/models/elokuva.php';
 	
 	if(empty($_POST["tunnus"])) {
-	naytaNakyma("login.php", array('virhe' => "Kirjautuminen epäonnistui! Et antanut käyttäjätunnusta.",));
+		naytaNakyma("login.php", array('virhe' => "Kirjautuminen epäonnistui! Et antanut käyttäjätunnusta.",));
 	}
 	
 	$tunnus = $_POST["tunnus"];
 
 	if(empty($_POST["salasana"])) {
-	 naytaNakyma("login.php", array(
+		naytaNakyma("login.php", array(
 	 	'kayttaja' => $tunnus,
 	 	'virhe' => "Kirjautuminen epäonnistui! Et antanut salasanaa.",));
 	}
+	
 	$salasana = $_POST["salasana"];
 	
 	$kayttaja = Kayttaja::getKayttajaTunnuksilla($tunnus, $salasana);

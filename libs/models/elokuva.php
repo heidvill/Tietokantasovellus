@@ -12,20 +12,32 @@ class Elokuva {
 	private $maa;
 	private $nahty;
 	private $virheet;
+	private $arvot;
+	private $nayttelija1;
+	private $nayttelija2;
+	private $nayttelija3;
+	private $ohjaaja1;
+	private $ohjaaja2;
+	private $ohjaaja3;
+	private $kategoria1;
+	private $kategoria2;
+	private $kategoria3;
 	
 	public function setNimi($nimi){
 		$this->nimi = $nimi;
-	
+		$this->arvot['nimi'] = $nimi;
+		
 		if(trim($this->nimi) ==''){
 			$this->virheet['nimi'] = "Nimi ei saa olla tyhjä!";
 		}else{
-			unset($this->virheet['nimi']);
-		}
-		
+			unset($this->virheet['nimi']);	
+		}	
 	}
 	
 	public function setKesto($kesto){
 		$this->kesto = $kesto;
+		$this->arvot['kesto'] = $kesto;
+		
 		if(!is_numeric($kesto) && $kesto!=''){
 			$this->virheet['kesto'] = "Kesto pitää antaa numeroina!";
 		} else if(!is_numeric($kesto)){
@@ -39,6 +51,8 @@ class Elokuva {
 	
 	public function setIkaraja($ikaraja){
 		$this->ikaraja = $ikaraja;
+		$this->arvot['ika'] = $ikaraja;
+		
 		if(strlen(trim($this->ikaraja)) >3){
 			$this->virheet['ika'] = "Ikäraja saa olla vain kolme merkkiä pitkä!";
 		}else{
@@ -47,8 +61,10 @@ class Elokuva {
 	}
 	
 	public function setVuosi($vuosi){
-	$this->vuosi = $vuosi;
-	if(!is_numeric($vuosi) && $vuosi!=''){
+		$this->vuosi = $vuosi;
+		$this->arvot['vuosi'] = $vuosi;
+		
+		if(!is_numeric($vuosi) && $vuosi!=''){
 			$this->virheet['vuosi'] = "Vuosi pitää antaa numeroina!";
 		} else if(!is_numeric($vuosi)){
 			$this->vuosi = null;
@@ -59,50 +75,119 @@ class Elokuva {
 	}
 	
 	public function setKieli($kieli){
-	$this->kieli = $kieli;
+		$this->kieli = $kieli;
+		$this->arvot['kieli'] = $kieli;
 	}
 	
 	public function setMaa($maa){
-	$this->maa = $maa;
+		$this->maa = $maa;
+		$this->arvot['maa'] = $maa;
 	}
 	
 	public function setNahty($nahty){
-	$this->nahty = $nahty;
+		$this->nahty = $nahty;
+		$this->arvot['nahty'] = $nahty;
+	}
+	
+	public function asetaNayttelijat($n1, $n2, $n3){
+		$this->nayttelija1 = $n1;
+		$this->nayttelija2 = $n2;
+		$this->nayttelija3 = $n3;
+		$this->arvot['nayttelija1'] = $n1;
+		$this->arvot['nayttelija2'] = $n2;
+		$this->arvot['nayttelija3'] = $n3;
+	}
+	
+	public function asetaOhjaajat($o1, $o2, $o3){
+		$this->ohjaaja1 = $o1;
+		$this->ohjaaja2 = $o2;
+		$this->ohjaaja2 = $o3;
+		$this->arvot['ohjaaja1'] = $o1;
+		$this->arvot['ohjaaja2'] = $o2;
+		$this->arvot['ohjaaja3'] = $o3;
+	}
+	
+	public function asetaKategoriat($k1, $k2, $k3){
+		$this->kategoria1 = $k1;
+		$this->kategoria2 = $k2;
+		$this->kategoria3 = $k3;
+		$this->arvot['kategoria1'] = $k1;
+		$this->arvot['kategoria2'] = $k2;
+		$this->arvot['kategoria3'] = $k3;
 	}
 	
 	public function getNimi(){
-	return $this->nimi;
+		return $this->nimi;
 	}
 	
 	public function getKesto(){
-	return $this->kesto;
+		return $this->kesto;
 	}
 	
 	public function getIkaraja(){
-	return $this->ikaraja;
+		return $this->ikaraja;
 	}
 	
 	public function getVuosi(){
-	return $this->vuosi;
+		return $this->vuosi;
 	}
 	
 	public function getKieli(){
-	return $this->kieli;
+		return $this->kieli;
 	}
 	
 	public function getMaa(){
-	return $this->maa;
+		return $this->maa;
 	}
 	
 	public function getNahty(){
-	return $this->nahty;
+		return $this->nahty;
 	}
 	
-	public function lisaaKantaan(){
-		
+	public function getId(){
+		return $this->id;
+	}
+	
+	public function getNayttelija1(){
+		return $this->nayttelija1;
+	}
+	
+	public function getNayttelija2(){
+		return $this->nayttelija2;
+	}
+	
+	public function getNayttelija3(){
+		return $this->nayttelija3;
+	}
+	
+	public function getOhjaaja1(){
+		return $this->ohjaaja1;
+	}
+	
+	public function getOhjaaja2(){
+		return $this->ohjaaja2;
+	}
+	
+	public function getOhjaaja3(){
+		return $this->ohjaaja3;
+	}
+	
+	public function getKategoria1(){
+		return $this->kategoria1;
+	}
+	
+	public function getKategoria2(){
+		return $this->kategoria2;
+	}
+	
+	public function getKategoria3(){
+		return $this->kategoria3;
+	}
+	
+		public function lisaaKantaan(){
 		$sql = "INSERT INTO Elokuva(nimi, kesto, ikaraja, vuosi, kieli, maa, nahty, kayttaja) 
-			VALUES(?,?,?,?,?,?,?,?) 
-			RETURNING idtunnus";
+				VALUES(?,?,?,?,?,?,?,?) 
+				RETURNING idtunnus";
 		$kysely = annayhteys() -> prepare($sql);
 		$ok = $kysely-> execute(array($this->getNimi(), $this->getKesto(), $this->getIkaraja(), $this->getVuosi(), $this->getKieli(), $this->getMaa(), $this->getNahty(), $_SESSION['kayttaja']->getKayttajaId()));
 		if($ok){
@@ -116,77 +201,301 @@ class Elokuva {
 	}
 	
 	public function getVirheet(){
-	return $this->virheet;
+		return $this->virheet;
 	}
-
+	
+	public function getArvot(){
+		return $this->arvot;
+	}
 	
 	
-	public function etsiElokuva($id){
-	$sql = "SELECT *
-		FROM elokuva
-		WHERE idtunnus = ?";
-	$kysely = annayhteys() -> prepare($sql);	
-	$kysely -> execute(array($id));
-	$tulos = $kysely -> fetchObject();
-	return $tulos;
+	public static function etsiElokuva($id){
+		$sql = "SELECT *
+				FROM elokuva
+				WHERE idtunnus = ? LIMIT 1";
+		$kysely = annayhteys() -> prepare($sql);	
+		$kysely -> execute(array($id));
+		$tulos = $kysely -> fetchObject();
+		
+		if($tulos==null){
+			return null;
+		} else {
+			$elokuva = new Elokuva();
+			$elokuva->id = $tulos->idtunnus;
+			$elokuva->nimi = $tulos->nimi;
+			$elokuva->kesto = $tulos->kesto;
+			$elokuva->vuosi = $tulos->vuosi;
+			$elokuva->ikaraja = $tulos->ikaraja;
+			$elokuva->kieli = $tulos->kieli;
+			$elokuva->maa = $tulos->maa;
+			$elokuva->nahty = $tulos->nahty;
+			
+			$nayttelijat = self::etsiNayttelijat($elokuva->id);
+			
+			$elokuva->nayttelija1 = $nayttelijat[0];
+			$elokuva->nayttelija2 = $nayttelijat[1];
+			$elokuva->nayttelija3 = $nayttelijat[2];
+			
+			$ohjaajat = self::etsiOhjaajat($elokuva->id);
+			
+			$elokuva->ohjaaja1 = $ohjaajat[0];
+			$elokuva->ohjaaja2 = $ohjaajat[1];
+			$elokuva->ohjaaja3 = $ohjaajat[2];
+			
+			$kategoriat = self::etsiKategoriat($elokuva->id);
+			
+			$elokuva->kategoria1 = $kategoriat[0];
+			$elokuva->kategoria2 = $kategoriat[1];
+			$elokuva->kategoria3 = $kategoriat[2];
+			
+			return $elokuva;
+		}
+		
 	}
 	
 	function hae($nimi, $nayttelija, $ohjaaja, $kategoria){
-	$nimi = "%$nimi%";
-	$sql = "SELECT elokuva.idtunnus, elokuva.nimi, elokuva.vuosi, elokuva.nahty
-		FROM elokuva";
-	$joins = '';
-	$wheres = array();
-	$data = array();
+		$nimi = "%$nimi%";
+		$sql = "SELECT elokuva.idtunnus, elokuva.nimi, elokuva.vuosi, elokuva.nahty
+				FROM elokuva";
+		$joins = '';
+		$wheres = array();
+		$data = array();
 	
-	if($nimi!=null){
-		//$joins = $joins." WHERE nimi LIKE ?";
-		$wheres[] = "elokuva.nimi LIKE ?";
-		$data[]= $nimi;
-	}
-	if($nayttelija!=null){
-		$joins = $joins." JOIN roolisuoritus ON roolisuoritus.elokuva = elokuva.idtunnus 
-		JOIN henkilo ON nayttelija = henkilo.idtunnus";
-		$wheres[] = "henkilo.nimi = ?";
-		$data[] =$nayttelija;
-	}
-	if($ohjaaja!=null){
-		$joins = $joins." JOIN ohjaus ON ohjaus.elokuva = elokuva.idtunnus
-		JOIN henkilo ON ohjaaja = henkilo.idtunnus";
-		$wheres[] ="henkilo.nimi = ?"; 
-		$data[] = $ohjaaja;
-	}
-	if($kategoria!=null){
-	$joins = $joins." JOIN luokitus ON luokitus.elokuva = elokuva.idtunnus
-		JOIN kategoria ON luokitus.kategoria = kategoria.idtunnus";
-		$wheres[] = "kategoria.nimi = ?";
-		$data[] = $kategoria;
-	}
-	$wheres = implode(" AND ",$wheres);
-	$sql = $sql.$joins.' WHERE '.$wheres.' AND kayttaja = ?';
-	$data[] = $_SESSION['kayttaja']->getKayttajaId();
-	$kysely = annayhteys() -> prepare($sql);
-	$kysely -> execute($data);
-	$tulos = $kysely -> fetchAll(PDO::FETCH_ASSOC);
-	return $tulos;
+		if($nimi!=null){
+			//$joins = $joins." WHERE nimi LIKE ?";
+			$wheres[] = "elokuva.nimi LIKE ?";
+			$data[]= $nimi;
+		}
+		
+		if($nayttelija!=null){
+			$joins = $joins." JOIN roolisuoritus ON roolisuoritus.elokuva = elokuva.idtunnus 
+			JOIN henkilo ON nayttelija = henkilo.idtunnus";
+			$wheres[] = "henkilo.nimi = ?";
+			$data[] =$nayttelija;
+		}
+		
+		if($ohjaaja!=null){
+			$joins = $joins." JOIN ohjaus ON ohjaus.elokuva = elokuva.idtunnus
+			JOIN henkilo ON ohjaaja = henkilo.idtunnus";
+			$wheres[] ="henkilo.nimi = ?"; 
+			$data[] = $ohjaaja;
+		}
+		
+		if($kategoria!=null){
+			$joins = $joins." JOIN luokitus ON luokitus.elokuva = elokuva.idtunnus
+			JOIN kategoria ON luokitus.kategoria = kategoria.idtunnus";
+			$wheres[] = "kategoria.nimi = ?";
+			$data[] = $kategoria;
+		}
+		
+		$wheres = implode(" AND ",$wheres);
+		$sql = $sql.$joins.' WHERE '.$wheres.' AND kayttaja = ?';
+		$data[] = $_SESSION['kayttaja']->getKayttajaId();
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute($data);
+		$tulos = $kysely -> fetchAll(PDO::FETCH_ASSOC);
+		
+		return $tulos;
 	}
 
 	function haeAakkosjarjestyksessa(){
-	$sql = "SELECT idtunnus, nimi, vuosi
-		FROM elokuva WHERE kayttaja = ? ORDER BY nimi ASC";
-	$kysely = annayhteys() -> prepare($sql);
-	$kysely -> execute(array($_SESSION['kayttaja']->getKayttajaId()));
-	$tulos = $kysely -> fetchAll(PDO::FETCH_ASSOC);
-	return $tulos;
+		$sql = "SELECT idtunnus, nimi, vuosi
+			FROM elokuva WHERE kayttaja = ? ORDER BY nimi ASC";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($_SESSION['kayttaja']->getKayttajaId()));
+		$tulos = $kysely -> fetchAll(PDO::FETCH_ASSOC);
+		
+		return $tulos;
 	}
 	
 	function haeKaikki(){
 	//session_start();
-	$sql = "SELECT elokuva.nimi, vuosi, nahty
-		FROM elokuva WHERE kayttaja = ? ORDER BY elokuva.idtunnus ASC";
-	$kysely = annayhteys() -> prepare($sql);
-	$kysely -> execute(array($_SESSION['kayttaja']->getKayttajaId()));
-	$tulos = $kysely -> fetchAll(PDO::FETCH_ASSOC);
-	return $tulos;
+		$sql = "SELECT idtunnus, nimi, vuosi, nahty
+			FROM elokuva WHERE kayttaja = ? ORDER BY elokuva.idtunnus ASC";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($_SESSION['kayttaja']->getKayttajaId()));
+		$tulos = $kysely -> fetchAll(PDO::FETCH_ASSOC);
+		
+		return $tulos;
 	}
+	
+	function setNayttelija($nayttelija, $elokuva){
+	
+		if($nayttelija != null){
+			$sql = "SELECT idtunnus
+					FROM henkilo
+					WHERE nimi LIKE ?";
+			$kysely = annayhteys() -> prepare($sql);
+			$kysely -> execute(array($nayttelija));
+			$tulos = $kysely -> fetchColumn();
+			
+			if($tulos == false){
+				self::lisaaNayttelijaKantaan($nayttelija, $elokuva);
+			} else {
+				self::setRoolisuoritus($tulos, $elokuva);
+			}
+		}
+	}
+	
+	private function lisaaNayttelijaKantaan($nayttelija, $elokuva){
+		$sql = "INSERT INTO henkilo(nimi)
+				VALUES (?)
+				RETURNING idtunnus";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($nayttelija));
+		$nayttelijaId = $kysely -> fetchColumn();
+		self::setRoolisuoritus($nayttelijaId, $elokuva);
+	}
+	
+	private function setRoolisuoritus($nayttelijaId, $elokuvaId){
+		$sql = "INSERT INTO roolisuoritus(elokuva, nayttelija)
+				VALUES (?,?)";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($elokuvaId, $nayttelijaId));
+	}
+	
+	function setOhjaaja($ohjaaja, $elokuva){
+		if($ohjaaja != null){
+			$sql = "SELECT idtunnus
+					FROM henkilo
+					WHERE nimi LIKE ?";
+			$kysely = annayhteys() -> prepare($sql);
+			$kysely -> execute(array($ohjaaja));
+			$tulos = $kysely -> fetchColumn();
+			
+			if($tulos == false){
+				self::lisaaOhjaajaKantaan($ohjaaja, $elokuva);
+			} else {
+				self::setOhjaus($tulos, $elokuva);
+			}
+		}
+	}
+	
+	private function lisaaOhjaajaKantaan($ohjaaja, $elokuva){
+		$sql = "INSERT INTO henkilo(nimi)
+				VALUES (?)
+				RETURNING idtunnus";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($ohjaaja));
+		$ohjaajaId = $kysely -> fetchColumn();
+		self::setOhjaus($ohjaajaId, $elokuva);
+	}
+	
+	private function setOhjaus($ohjaajaId, $elokuvaId){
+		$sql = "INSERT INTO ohjaus(elokuva, ohjaaja)
+				VALUES (?,?)";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($elokuvaId, $ohjaajaId));
+	}
+	
+	function setKategoria($kategoria, $elokuva){
+		if($kategoria != null){
+			$sql = "SELECT idtunnus
+					FROM kategoria
+					WHERE nimi LIKE ?";
+			$kysely = annayhteys() -> prepare($sql);
+			$kysely -> execute(array($kategoria));
+			$tulos = $kysely -> fetchColumn();
+			
+			if($tulos == false){
+				self::lisaaKategoriaKantaan($kategoria, $elokuva);
+			} else {
+				self::setLuokitus($tulos, $elokuva);
+			}
+		}
+	}
+	
+	private function lisaaKategoriaKantaan($kategoria, $elokuva){
+		$sql = "INSERT INTO kategoria(nimi)
+				VALUES (?)
+				RETURNING idtunnus";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($kategoria));
+		$kategoriaId = $kysely -> fetchColumn();
+		self::setOhjaus($kategoriaId, $elokuva);
+	}
+	
+	private function setLuokitus($kategoriaId, $elokuvaId){
+		$sql = "INSERT INTO luokitus(elokuva, kategoria)
+				VALUES (?,?)";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($elokuvaId, $kategoriaId));
+	}
+	
+	function etsiNayttelijat($elokuvaId){
+		$sql = "SELECT nimi
+				FROM roolisuoritus
+				INNER JOIN henkilo ON nayttelija = henkilo.idtunnus
+				WHERE elokuva = ?";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($elokuvaId));
+		$tulos = $kysely -> fetchAll(PDO::FETCH_COLUMN);
+		
+		return $tulos;
+	}
+	
+	function etsiOhjaajat($elokuvaId){
+		$sql = "SELECT nimi
+				FROM ohjaus
+				INNER JOIN henkilo ON ohjaaja = henkilo.idtunnus
+				WHERE elokuva = ?";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($elokuvaId));
+		$tulos = $kysely -> fetchAll(PDO::FETCH_COLUMN);
+		
+		return $tulos;
+	}
+	
+	function etsiKategoriat($elokuvaId){
+		$sql = "SELECT nimi
+				FROM luokitus
+				INNER JOIN kategoria ON kategoria = kategoria.idtunnus
+				WHERE elokuva = ?";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($elokuvaId));
+		$tulos = $kysely -> fetchAll(PDO::FETCH_COLUMN);
+		
+		return $tulos;
+	}
+	
+	function poistaElokuva($elokuvaId){
+		$sql = "DELETE
+				FROM elokuva
+				WHERE idtunnus = ?";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($elokuvaId));
+	}
+	
+	function poistaRoolisuoritukset($elokuvaId){
+		$sql = "DELETE
+				FROM roolisuoritus
+				WHERE elokuva = ?";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($elokuvaId));
+	}
+	
+	function poistaOhjaukset($elokuvaId){
+		$sql = "DELETE
+				FROM ohjaus
+				WHERE elokuva = ?";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($elokuvaId));
+	}
+	
+	function poistaLuokitukset($elokuvaId){
+		$sql = "DELETE
+				FROM luokitus
+				WHERE elokuva = ?";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($elokuvaId));
+	}
+	
+	function tallennaMuokattuElokuva($elokuva){
+		$sql = "UPDATE elokuva
+				SET nimi = ?, kesto = ?, ikaraja = ?, vuosi = ?, kieli = ?, maa = ?, nahty = ?
+				WHERE idtunnus = ?";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($elokuva->getNimi(), $elokuva->getKesto(), $elokuva->getIkaraja(), $elokuva->getVuosi(), $elokuva->getKieli(), $elokuva->getMaa(), $elokuva->getNahty(), $elokuva->getId()));
+	}
+	
 }

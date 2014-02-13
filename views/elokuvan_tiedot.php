@@ -1,76 +1,120 @@
 <div class="container">
     <h1>Elokuvan tiedot</h1>
     
-    	Tarkastele tai muokkaa elokuvan tietoja.
-    	<br>
-    	<br>
+    	<p>Tarkastele tai muokkaa elokuvan tietoja.</p>
     	
-    <form class="form-horizontal" role="form" action="etusivu.php" method="POST">
+    <form class="form-horizontal" role="form" action="tallenna_muokkaus.php" method="POST">
       <div class="form-group">
         <label for="elokuva" class="col-md-2 control-label">Elokuvan nimi</label>
         <div class="col-md-10">
-          <input type="text" class="form-control" id="elokuva" name="elokuva" placeholder="nimi">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="naytttelija" class="col-md-2 control-label">Näyttelijä</label>
-        <div class="col-md-10">
-          <input type="text" class="form-control" id="nayttelija1" name="nayttelija" placeholder="näyttelijä">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="ohjaaja" class="col-md-2 control-label">Ohjaaja</label>
-        <div class="col-md-10">
-          <input type="text" class="form-control" id="ohjaaja" name="ohjaaja" placeholder="ohjaaja">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="kategoria" class="col-md-2 control-label">Kategoria</label>
-        <div class="col-md-10">
-          <input type="text" class="form-control" id="kategoria" name="kategoria" placeholder="kategoria">
+          <input type="text" class="form-control" value="<?php echo htmlspecialchars($data->tulos->getNimi()); ?>" name="nimi" placeholder="nimi">
         </div>
       </div>
       <div class="form-group">
         <label for="kesto" class="col-md-2 control-label">Kesto (min)</label>
         <div class="col-md-10">
-          <input type="text" class="form-control" id="kesto" name="kesto" placeholder="kesto">
+          <input type="text" class="form-control" value="<?php echo htmlspecialchars($data->tulos->getKesto()); ?>" name="kesto" placeholder="kesto">
         </div>
       </div>
       <div class="form-group">
         <label for="vuosi" class="col-md-2 control-label">Julkaisuvuosi</label>
         <div class="col-md-10">
-          <input type="text" class="form-control" id="vuosi" name="vuosi" placeholder="Julkaisuvuosi">
+          <input type="text" class="form-control" value="<?php echo htmlspecialchars($data->tulos->getVuosi()); ?>" name="vuosi" placeholder="Julkaisuvuosi">
         </div>
       </div>
       <div class="form-group">
         <label for="ikaraja" class="col-md-2 control-label">Ikäraja</label>
         <div class="col-md-10">
-          <input type="text" class="form-control" id="ikaraja" name="ikaraja" placeholder="Ikäraja">
+          <input type="text" class="form-control" value="<?php echo htmlspecialchars($data->tulos->getIkaraja()); ?>" name="ikaraja" placeholder="Ikäraja">
         </div>
       </div>
       <div class="form-group">
         <label for="kieli" class="col-md-2 control-label">Kieli</label>
         <div class="col-md-10">
-          <input type="text" class="form-control" id="kieli" name="kieli" placeholder="Kieli">
+          <input type="text" class="form-control" value="<?php echo htmlspecialchars($data->tulos->getKieli()); ?>" name="kieli" placeholder="Kieli">
         </div>
       </div>
       <div class="form-group">
         <label for="maat" class="col-md-2 control-label">Maat</label>
         <div class="col-md-10">
-          <input type="text" class="form-control" id="maat" name="maat" placeholder="Maat">
+          <input type="text" class="form-control" value="<?php echo htmlspecialchars($data->tulos->getMaa()); ?>" name="maat" placeholder="Maat">
         </div>
       </div>
       <div class="form-group">
         <label for="nahty" class="col-md-2 control-label">Nähty</label>
         <div class="col-md-10">
-          <input type="text" class="form-control" id="nahty" name="nahty" placeholder="kyllä/ei">
+          <input type="text" class="form-control" value="<?php echo htmlspecialchars($data->tulos->getNahty()); ?>" name="nahty" placeholder="kyllä/ei">
+        </div>
+      </div>
+       <div class="form-group">
+        <label for="naytttelija" class="col-md-2 control-label">Näyttelijä</label>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name="nayttelija1" value="<?php echo htmlspecialchars($data->tulos->getNayttelija1()); ?>" placeholder="näyttelijä">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="naytttelija" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name="nayttelija2" value="<?php echo htmlspecialchars($data->tulos->getNayttelija2()); ?>" placeholder="näyttelijä">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="naytttelija" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name="nayttelija3" value="<?php echo htmlspecialchars($data->tulos->getNayttelija3()); ?>" placeholder="näyttelijä">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="ohjaaja" class="col-md-2 control-label">Ohjaaja</label>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name="ohjaaja1" value="<?php echo htmlspecialchars($data->tulos->getOhjaaja1()); ?>" placeholder="ohjaaja">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="ohjaaja" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name="ohjaaja2" value="<?php echo htmlspecialchars($data->tulos->getOhjaaja2()); ?>" placeholder="ohjaaja">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="ohjaaja" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name="ohjaaja3" value="<?php echo htmlspecialchars($data->tulos->getOhjaaja3()); ?>" placeholder="ohjaaja">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="kategoria" class="col-md-2 control-label">Kategoria</label>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name="kategoria1" value="<?php echo htmlspecialchars($data->tulos->getKategoria1()); ?>" placeholder="kategoria">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="kategoria" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name="kategoria2" value="<?php echo htmlspecialchars($data->tulos->getKategoria2()); ?>" placeholder="kategoria">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="kategoria" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name="kategoria3" value="<?php echo htmlspecialchars($data->tulos->getKategoria3()); ?>" placeholder="kategoria">
         </div>
       </div>
       <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
+        <input type="hidden" value="<?php echo htmlspecialchars($data->tulos->getId()); ?>" name="talletettava">
           <button type="submit" class="btn btn-default">Tallenna</button>
-           <button type="reset" class="btn btn-default">Tyhjennä kentät</button>
+          <button type="reset" class="btn btn-default">Tyhjennä kentät</button>
         </div>
       </div>
+      </form>
+      
+      <form class="form-horizontal" role="form" action="poista_elokuva.php" method="GET">
+      	<div class="form-group">
+      		<div class="col-md-offset-2 col-md-10">
+      			<input type="hidden" value="<?php echo htmlspecialchars($data->tulos->getId()); ?>" name="poistettava">
+  				<button type="submit" class="btn btn-default">Poista</button>
+  			</div>
+     	 </div>
       </form>
   </div>

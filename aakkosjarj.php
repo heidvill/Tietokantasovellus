@@ -4,6 +4,7 @@
 	require_once "libs/models/elokuva.php";
 	
 	onkoKirjautunut();
-	$hakuTulos = elokuva::haeKaikki();
-
+	
+	$hakuTulos = elokuva::haeAakkosjarjestyksessa();
+	//require_once 'views/pohja.php';
 	naytaNakyma("etusivu.php", array('tulos' => $hakuTulos,), 'Etusivu');
