@@ -5,5 +5,6 @@
 	
 	onkoKirjautunut();
 	$hakuTulos = elokuva::haeKaikki();
+	$maara = elokuva::kayttajanElokuvienMaara();
 
-	naytaNakyma("etusivu.php", array('tulos' => $hakuTulos,), 'Etusivu');
+	naytaNakyma("etusivu.php", array('tulos' => $hakuTulos, 'maara' => $maara), 'Etusivu');

@@ -6,15 +6,19 @@ class Kayttaja {
 	private $tunnus;
 	private $salasana;
 
-	public function __construct($id, $tunnus, $salasana) {
-  //public function __construct()
-		$this->id = $id;
+  /* Tähän gettereitä ja settereitä */
+
+	public function setTunnus($tunnus){
 		$this->tunnus = $tunnus;
-		$this->salasana = $salasana;
-    
 	}
 
-  /* Tähän gettereitä ja settereitä */
+	public function setSalasana($salasana){
+		$this->salasana = $salasana;
+	}
+
+	public function setId($id){
+		$this->id = $id;
+	}
   
 	public static function getKayttajat() {
 		$sql = "SELECT idtunnus,tunnus, salasana from kayttaja";
@@ -24,7 +28,10 @@ class Kayttaja {
 		$tulokset = array();
 		
 		foreach($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
-			$kayttaja = new Kayttaja($tulos->idtunnus, $tulos->tunnus, $tulos->salasana); 
+			$kayttaja = new Kayttaja();
+			$kayttaja->setTunnus($tulos->tunnus); 
+			$kayttaja->setSalasana($tulos->salasana);
+			$kayttaja->setId($tulos->idtunnus);
     		//$array[] = $muuttuja; lisää muuttujan arrayn perään. 
     		//Se vastaa melko suoraan ArrayList:in add-metodia.
 			$tulokset[] = $kayttaja;
@@ -46,7 +53,9 @@ class Kayttaja {
 	}
 
 	public static function getKayttajaTunnuksilla($kayttaja, $salasana) {
-		$sql = "SELECT idtunnus, tunnus, salasana from kayttaja where tunnus = ? AND salasana = ? LIMIT 1";
+		$sql = "SELECT idtunnus, tunnus, salasana 
+				FROM kayttaja 
+				WHERE tunnus = ? AND salasana = ? LIMIT 1";
 		$kysely = annaYhteys()->prepare($sql);
 		$kysely->execute(array($kayttaja, $salasana));
 
@@ -55,12 +64,61 @@ class Kayttaja {
 		if ($tulos == null){
 			return null;
 		} else {
-			$kayttaja = new Kayttaja($tulos->idtunnus, $tulos->tunnus, $tulos->salasana);
-		//$kayttaja->id = $tulos->id;
-		//$kayttaja->tunnut = $tulos->tunnus;
-		//$kayttaja->salasana = $tulos->salasana;
-			return $kayttaja;
+		$kayttaja = new Kayttaja();
+		$kayttaja->id = $tulos->idtunnus;
+		$kayttaja->tunnus = $tulos->tunnus;
+		$kayttaja->salasana = $tulos->salasana;
+		return $kayttaja;
 		}
+	}
+
+	public function getKayttaja($tunnus){
+		$sql = "SELECT tunnus 
+				FROM kayttaja 
+				WHERE tunnus = ? LIMIT 1";
+		$kysely = annaYhteys()->prepare($sql);
+		$kysely->execute(array($tunnus));
+
+		$tulos = $kysely->fetchObject();
+		
+		if ($tulos == null){
+			return null;
+		} else {
+		$kayttaja = new Kayttaja();
+		$kayttaja->id = $tulos->idtunnus;
+		$kayttaja->tunnut = $tulos->tunnus;
+		$kayttaja->salasana = $tulos->salasana;
+		return $kayttaja;
+		}
+	}
+
+	public function lisaaKantaan(){
+		$sql = "INSERT INTO Kayttaja(tunnus, salasana)
+				VALUES(?,?)
+				RETURNING idtunnus";
+		$kysely = annayhteys() -> prepare($sql);
+		$ok = $kysely-> execute(array($this->getTunnus(), $this->getSalasana()));
+		if($ok){
+			$this->id = $kysely->fetchColumn();
+		}
+
+		return $ok;
+	}
+
+	function poistaKayttaja($id){
+		$sql = "DELETE
+				FROM kayttaja
+				WHERE idtunnus = ?";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($id));
+	}
+
+	function vaihdaSalasanaKantaan($uusiS){
+		$sql = "UPDATE kayttaja
+				SET salasana = ?
+				WHERE idtunnus = ?";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely -> execute(array($uusiS, $_SESSION['kayttaja']->getKayttajaId()));
 	}
 
 }

@@ -311,7 +311,7 @@ class Elokuva {
 	function haeKaikki(){
 	//session_start();
 		$sql = "SELECT idtunnus, nimi, vuosi, nahty
-			FROM elokuva WHERE kayttaja = ? ORDER BY elokuva.idtunnus ASC";
+			FROM elokuva WHERE kayttaja = ? ORDER BY elokuva.idtunnus DESC";
 		$kysely = annayhteys() -> prepare($sql);
 		$kysely -> execute(array($_SESSION['kayttaja']->getKayttajaId()));
 		$tulos = $kysely -> fetchAll(PDO::FETCH_ASSOC);
@@ -412,7 +412,7 @@ class Elokuva {
 		$kysely = annayhteys() -> prepare($sql);
 		$kysely -> execute(array($kategoria));
 		$kategoriaId = $kysely -> fetchColumn();
-		self::setOhjaus($kategoriaId, $elokuva);
+		self::setLuokitus($kategoriaId, $elokuva);
 	}
 	
 	private function setLuokitus($kategoriaId, $elokuvaId){
@@ -496,6 +496,46 @@ class Elokuva {
 				WHERE idtunnus = ?";
 		$kysely = annayhteys() -> prepare($sql);
 		$kysely -> execute(array($elokuva->getNimi(), $elokuva->getKesto(), $elokuva->getIkaraja(), $elokuva->getVuosi(), $elokuva->getKieli(), $elokuva->getMaa(), $elokuva->getNahty(), $elokuva->getId()));
+	}
+
+	function tallennaMuokattuRoolisuoritus($elokuva, $nayttelija1, $nayttelija2, $nayttelija3){
+		self::poistaRoolisuoritukset($elokuva->getId());
+		self::setNayttelija($nayttelija1, $elokuva->getId());
+		self::setNayttelija($nayttelija2, $elokuva->getId());
+		self::setNayttelija($nayttelija3, $elokuva->getId());
+	}
+
+	function tallennaMuokattuOhjaus($elokuva, $ohjaaja1, $ohjaaja2, $ohjaaja3){
+		self::poistaOhjaukset($elokuva->getId());
+		self::setOhjaaja($ohjaaja1, $elokuva->getId());
+		self::setOhjaaja($ohjaaja2, $elokuva->getId());
+		self::setOhjaaja($ohjaaja3, $elokuva->getId());
+	}
+
+	function tallennaMuokattuLuokitus($elokuva, $kategoria1, $kategoria2, $kategoria3){
+		self::poistaLuokitukset($elokuva->getId());
+		self::setKategoria($kategoria1, $elokuva->getId());
+		self::setKategoria($kategoria2, $elokuva->getId());
+		self::setKategoria($kategoria3, $elokuva->getId());
+	}
+
+	function poistaKayttajanElokuvat($kayttajaId){
+		$sql = "DELETE
+				FROM elokuva
+				WHERE kayttaja = ?";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely->execute(array($kayttajaId));
+	}
+
+	function kayttajanElokuvienMaara(){
+		$sql = "SELECT count(*)
+				FROM elokuva
+				WHERE kayttaja = ?";
+		$kysely = annayhteys() -> prepare($sql);
+		$kysely->execute(array($_SESSION['kayttaja']->getKayttajaId()));
+		$maara = $kysely->fetchColumn();
+
+		return $maara;
 	}
 	
 }

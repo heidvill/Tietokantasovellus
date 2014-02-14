@@ -14,12 +14,13 @@
 		naytaNakyma("haku.php", array('tyhjaHaku' => "Et kirjoittanut hakusanaa!",));
 	}else{
 		$hakuTulos = elokuva::hae($nimi, $nayttelija, $ohjaaja, $kategoria);
+		$maara = elokuva::kayttajanElokuvienMaara();
 	
 		if(empty($hakuTulos)){
 			$hakuTulos = elokuva::haeKaikki();
-			naytaNakyma("etusivu.php", array('tyhjaHaku' => "Haku ei tuottanut tuloksia. Lista näyttää kaikki elokuvasi.",'tulos' => $hakuTulos,));
+			naytaNakyma("etusivu.php", array('tyhjaHaku' => "Haku ei tuottanut tuloksia. Lista näyttää kaikki elokuvasi.",'tulos' => $hakuTulos, 'maara'=>$maara));
 		}else{
-			naytaNakyma("etusivu.php", array('tulos' => $hakuTulos,));
+			naytaNakyma("etusivu.php", array('tulos' => $hakuTulos, 'maara'=>$maara));
 		}
 	}
 	

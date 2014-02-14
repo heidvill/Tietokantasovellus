@@ -34,6 +34,9 @@
 		elokuva::setKategoria($_POST['kategoria1'], $elokuva->getId());
 		elokuva::setKategoria($_POST['kategoria2'], $elokuva->getId());
 		elokuva::setKategoria($_POST['kategoria3'], $elokuva->getId());
+		elokuva::tallennaMuokattuRoolisuoritus($elokuva, $_POST['nayttelija1'],$_POST['nayttelija2'],$_POST['nayttelija3']);
+		elokuva::tallennaMuokattuOhjaus($elokuva, $_POST['ohjaaja1'], $_POST['ohjaaja2'], $_POST['ohjaaja3']);
+		elokuva::tallennaMuokattuLuokitus($elokuva, $_POST['kategoria1'],$_POST['kategoria2'],$_POST['kategoria3']);
 		$tulos=elokuva::haeKaikki();
 		lahetaSivulle("etusivu.php", array('tulos'=>$tulos));
 	}else{

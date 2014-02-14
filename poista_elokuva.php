@@ -6,9 +6,9 @@
 	onkoKirjautunut();
 	
 	$poistettava = $_GET['poistettava'];
-	elokuva::poistaRoolisuoritukset($poistettava);
+	/*elokuva::poistaRoolisuoritukset($poistettava);
 	elokuva::poistaOhjaukset($poistettava);
-	elokuva::poistaLuokitukset($poistettava);
+	elokuva::poistaLuokitukset($poistettava);*/
 	elokuva::poistaElokuva($poistettava);
 	
 	$tulos=elokuva::haeKaikki();

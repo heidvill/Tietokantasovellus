@@ -24,11 +24,6 @@ require_once 'libs/models/elokuva.php';
 	if($kayttaja != null) {
 		$_SESSION['kayttaja'] = $kayttaja;
 		//$data = array();
-		//$data[]=elokuva::haeKaikki();
-		//$nykyinenSivu = 'etusivu';
-		//$hakuTulos = elokuva::haeKaikki();
-		
-		//naytaNakyma("etusivu.php", array('tulos' => $hakuTulos));
 		lahetaSivulle("etusivu.php");
 	} else {
 		naytaNakyma("login.php", array(

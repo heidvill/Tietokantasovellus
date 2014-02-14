@@ -14,7 +14,7 @@ create table elokuva(
 	maa varchar(100),
 	nahty varchar(20),
 	kayttaja integer,
-	foreign key(kayttaja) references kayttaja
+	foreign key(kayttaja) references kayttaja ON DELETE CASCADE
 );
 
 create table henkilo(
@@ -30,21 +30,21 @@ create table kategoria(
 create table ohjaus(
 	elokuva integer,
 	ohjaaja integer,
-	foreign key(elokuva) references elokuva,
+	foreign key(elokuva) references elokuva ON DELETE CASCADE, 
 	foreign key(ohjaaja) references henkilo
 );
 
 create table roolisuoritus(
 	elokuva integer,
 	nayttelija integer,
-	foreign key(elokuva) references elokuva,
+	foreign key(elokuva) references elokuva ON DELETE CASCADE,
 	foreign key(nayttelija) references henkilo
 );
 
 create table luokitus(
 	elokuva integer,
 	kategoria integer,
-	foreign key(elokuva) references elokuva,
+	foreign key(elokuva) references elokuva ON DELETE CASCADE,
 	foreign key(kategoria) references kategoria
 );
 

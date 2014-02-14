@@ -4,19 +4,19 @@
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/bootstrap-theme.css" rel="stylesheet">
 		<link href="css/main.css" rel="stylesheet">
-
 		<link rel="icon" href="favicon.ico"/> 
-		
-		<title>Kirjautuminen</title>
+		<title>Rekisteröityminen</title>
 	</head>
 	
 	<body>
 		<div class="container">
-			<h1>Kirjaudu</h1>
+			<h1>Luo tunnus</h1>
 			<?php if (!empty($data->virhe)): ?>
 				<div class="alert alert-danger"><?php echo $data->virhe; ?><br></div>
 			<?php endif; ?>
-    <form class="form-horizontal" role="form" action="doLogin.php" method="POST">
+
+			<p>Huom! Sivun ylläpitäjä näkee salasanasi.</p>
+    <form class="form-horizontal" role="form" action="lisaa_kayttaja.php" method="POST">
       <div class="form-group">
         <label for="tunnus" class="col-md-2 control-label">Käyttäjätunnus</label>
         <div class="col-md-10">
@@ -26,31 +26,24 @@
       <div class="form-group">
         <label for="salasana" class="col-md-2 control-label">Salasana</label>
         <div class="col-md-10">
-          <input type="password" class="form-control" name="salasana" placeholder="Salasana" />
+          <input type="password" class="form-control" name="salasana1" placeholder="Salasana" />
         </div>
       </div>
-     <!--  <br>
-     
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-          <div class="checkbox">
-            <label>
-              <input type="checkbox"> Muista kirjautuminen
-            </label>
-          </div>
+       <div class="form-group">
+        <label for="salasana" class="col-md-2 control-label">Salasana uudelleen</label>
+        <div class="col-md-10">
+          <input type="password" class="form-control" name="salasana2" placeholder="Salasana" />
         </div>
       </div>
-      -->
+      <br>
       <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
           <button type="submit" class="btn btn-default">Kirjaudu sisään</button>
         </div>
       </div>
     </form>
-    <br>
-    <p>Unohditko salasanan? Ota yhteyttä sivun ylläpitäjään: heidi.villikka[at]helsinki.fi</p>
-    <p>Eikö sinulla ole tunnuksia? Rekisteröidy alla olevan linkin kautta.</p>
-    <p><a href="rekisteroityminen.php">Rekisteröidy</a></p>
+	<p><a href="index.php">Takaisin kirjautumissivulle</a></p>
+    
   </div>
 </body>
 </html>

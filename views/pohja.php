@@ -5,6 +5,8 @@
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/bootstrap-theme.css" rel="stylesheet">
 		<link href="css/main.css" rel="stylesheet">
+
+		<link rel="icon" href="favicon.ico"/> 
 		
 		<title><?php echo "$otsikko" ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

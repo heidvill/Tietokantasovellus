@@ -1,7 +1,7 @@
 <div class="container">
 	<h1>YMDb - Your Movie Database</h1>
-	<p>Hei X! </p>
-	<p>Sinulla on 3 elokuvaa tallennettuna tietokantaasi.</p>
+	<p>Hei <?php echo htmlspecialchars($_SESSION['kayttaja']->getTunnus()); ?>! </p>
+	<p>Sinulla on <?php echo htmlspecialchars($data->maara); ?> elokuvaa tallennettuna tietokantaasi.</p>
 	<p><a href="lisaa_elokuva.php">Lisää uusi elokuva</a></p>
 	
 	<form action="aakkosjarj.php"><button type="submit" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-th-list"></span> Listaa aakkosjärjestyksessä</button></form>
@@ -11,7 +11,7 @@
     <h1>Elokuvat</h1>
     
 	<?php if (!empty($data->tyhjaHaku)): ?>
-		<div class="alert alert-danger"><?php echo $data->tyhjaHaku; ?><br><br></div>
+		<div class="alert alert-danger"><?php echo $data->tyhjaHaku; ?><br></div>
 	<?php endif; ?>
     <table class="table table-striped">
       <thead>
