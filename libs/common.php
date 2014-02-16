@@ -13,8 +13,7 @@
 		exit();
 	}
 
-	function lahetaSivulle($sivu, $data = array()) {
-		$data = (object)$data;
+	function lahetaSivulle($sivu) {
 		header("Location: $sivu");
 		//header('Location: '.$sivu);
 	}
@@ -34,17 +33,5 @@
 			return true;
 		} 
 	}
-	
-		function naytaNakyma2($sivu, $data = array(), $otsikko, $data2 = array()) {
-		$data = (object)$data;
-		$data2 = (object)$data2;
-		$sivu = "views/$sivu";
-		if(!eiKirjautunut()){
-			require_once "views/pohja.php";
-		} else {
-			unset($_SESSION['kayttaja']);
-			require_once "$sivu";
-		}
-		exit();
-	}
+
 	

@@ -1,7 +1,15 @@
 <div class="container">
     <h1>Elokuvan tiedot</h1>
     
-    	<p>Tarkastele tai muokkaa elokuvan tietoja.</p>
+    <p>Tarkastele tai muokkaa elokuvan tietoja.</p>
+
+    <?php if (!empty($data->virheet)): ?>
+		<div class="alert alert-danger">
+			<?php foreach($data->virheet as $virhe):?>
+				<?php echo $virhe; ?><br>
+			<?php endforeach; ?>
+		</div>
+	<?php endif; ?>
     	
     <form class="form-horizontal" role="form" action="tallenna_muokkaus.php" method="POST">
       <div class="form-group">

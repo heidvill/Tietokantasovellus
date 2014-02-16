@@ -11,16 +11,16 @@
 	$kategoria = $_GET["kategoria"];
 	
 	if(empty($nimi) && empty($nayttelija) && empty($ohjaaja) && empty($kategoria)){
-		naytaNakyma("haku.php", array('tyhjaHaku' => "Et kirjoittanut hakusanaa!",));
+		naytaNakyma("haku.php", array('tyhjaHaku' => "Et kirjoittanut hakusanaa!",), "Haku");
 	}else{
 		$hakuTulos = elokuva::hae($nimi, $nayttelija, $ohjaaja, $kategoria);
 		$maara = elokuva::kayttajanElokuvienMaara();
 	
 		if(empty($hakuTulos)){
 			$hakuTulos = elokuva::haeKaikki();
-			naytaNakyma("etusivu.php", array('tyhjaHaku' => "Haku ei tuottanut tuloksia. Lista näyttää kaikki elokuvasi.",'tulos' => $hakuTulos, 'maara'=>$maara));
+			naytaNakyma("etusivu.php", array('tyhjaHaku' => "Haku ei tuottanut tuloksia. Lista näyttää kaikki elokuvasi.",'tulos' => $hakuTulos, 'maara'=>$maara), "Etusivu");
 		}else{
-			naytaNakyma("etusivu.php", array('tulos' => $hakuTulos, 'maara'=>$maara));
+			naytaNakyma("etusivu.php", array('tulos' => $hakuTulos, 'maara'=>$maara), "Etusivu");
 		}
 	}
 	

@@ -12,4 +12,4 @@
 	elokuva::poistaElokuva($poistettava);
 	
 	$tulos=elokuva::haeKaikki();
-	lahetaSivulle("etusivu.php", array('tulos'=>$tulos));
+	lahetaSivulle("etusivu.php");

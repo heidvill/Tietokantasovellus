@@ -36,7 +36,6 @@
 		lahetaSivulle("etusivu.php");
 	}else{
 		$virheet = $uusiE->getVirheet();
-		$arvot = $uusiE->getArvot();
 		naytaNakyma("lomake.php", array('virheet'=>$virheet, 'arvot'=>$uusiE), 'Uusi elokuva');
 	}
 	

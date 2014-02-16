@@ -1,10 +1,10 @@
 <div class="container">
 	<h1>Haku</h1>
     
-	<p>Voit hakea elokuvan, näyttelijän tai ohjaajan nimellä, sanalla tai sanan osalla.</p>
+	<p>Voit hakea elokuvan nimellä tai se osalla sekä näyttelijän, ohjaajan tai kategorian nimellä.</p>
     	
 	<?php if (!empty($data->tyhjaHaku)): ?>
-		<div class="alert alert-danger"><?php echo $data->tyhjaHaku; ?><br><br></div>
+		<div class="alert alert-danger"><?php echo $data->tyhjaHaku; ?><br></div>
 	<?php endif; ?>
     	
     <form class="form-horizontal" role="form" action="listaa_haku.php" method="GET">

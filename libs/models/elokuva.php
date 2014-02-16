@@ -299,8 +299,8 @@ class Elokuva {
 	}
 
 	function haeAakkosjarjestyksessa(){
-		$sql = "SELECT idtunnus, nimi, vuosi
-			FROM elokuva WHERE kayttaja = ? ORDER BY nimi ASC";
+		$sql = "SELECT idtunnus, nimi, vuosi, nahty
+				FROM elokuva WHERE kayttaja = ? ORDER BY nimi ASC";
 		$kysely = annayhteys() -> prepare($sql);
 		$kysely -> execute(array($_SESSION['kayttaja']->getKayttajaId()));
 		$tulos = $kysely -> fetchAll(PDO::FETCH_ASSOC);
