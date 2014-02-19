@@ -5,14 +5,30 @@
 	<p><a href="lisaa_elokuva.php">Lisää uusi elokuva</a></p>
 	
 	<form action="aakkosjarj.php"><button type="submit" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-th-list"></span> Listaa aakkosjärjestyksessä</button></form>
-</div>
 	
-<div class="container">
-    <h1>Elokuvat</h1>
-    
-	<?php if (!empty($data->tyhjaHaku)): ?>
+</div>
+
+<div  class="container">
+<?php if (!empty($data->tyhjaHaku)): ?>
+<br>
 		<div class="alert alert-danger"><?php echo $data->tyhjaHaku; ?><br></div>
 	<?php endif; ?>
+	
+	<?php if (!empty($_SESSION['ilmoitus'])): ?>
+	<br>
+  <div class="alert alert-success">
+    <?php echo $_SESSION['ilmoitus']; ?>
+  </div>
+</div>
+<?php
+  // Samalla kun viesti näytetään, se poistetaan istunnosta,
+  // ettei se näkyisi myöhemmin jollain toisella sivulla uudestaan.
+  unset($_SESSION['ilmoitus']); 
+  endif;
+?>
+
+<div class="container">
+    <h1>Elokuvat</h1>
     <table class="table table-striped">
       <thead>
         <tr>

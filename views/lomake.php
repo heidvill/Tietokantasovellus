@@ -45,67 +45,67 @@
       <div class="form-group">
         <label for="maat" class="col-md-2 control-label">Maa</label>
         <div class="col-md-10">
-          <input type="text" class="form-control" name="maa" value="<?php if(!empty($data->arvot->maa)): ?><?php echo htmlspecialchars($data->arvot->maa); ?><?php endif; ?>" placeholder="Maa">
+          <input type="text" class="form-control" name="maa" value="<?php echo htmlspecialchars($data->arvot->getMaa()); ?>" placeholder="Maa">
         </div>
       </div>
       <div class="form-group">
         <label for="nahty" class="col-md-2 control-label">Nähty</label>
         <div class="col-md-10">
-          <input type="text" class="form-control" name="nahty" value="<?php if(!empty($data->arvot->nahty)): ?><?php echo htmlspecialchars($data->arvot->nahty); ?><?php endif; ?>" placeholder="kyllä/ei">
+          <input type="text" class="form-control" name="nahty" value="<?php echo htmlspecialchars($data->arvot->getNahty()); ?>" placeholder="kyllä/ei">
         </div>
       </div>
             <div class="form-group">
         <label for="naytttelija" class="col-md-2 control-label">Näyttelijä</label>
         <div class="col-md-10">
-          <input type="text" class="form-control" name="nayttelija1" value="<?php if(!empty($data->arvot->nayttelija1)): ?><?php echo htmlspecialchars($data->arvot->nayttelija1); ?><?php endif; ?>" placeholder="näyttelijä">
+          <input type="text" class="form-control" name="nayttelija1" value="<?php echo htmlspecialchars($data->arvot->getNayttelija1()); ?>" placeholder="näyttelijä">
         </div>
       </div>
        <div class="form-group">
         <label for="naytttelija" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-          <input type="text" class="form-control" name="nayttelija2" value="<?php if(!empty($data->arvot->nayttelija2)): ?><?php echo htmlspecialchars($data->arvot->nayttelija2); ?><?php endif; ?>" placeholder="näyttelijä">
+          <input type="text" class="form-control" name="nayttelija2" value="<?php echo htmlspecialchars($data->arvot->getNayttelija2()); ?>" placeholder="näyttelijä">
         </div>
       </div>
        <div class="form-group">
         <label for="naytttelija" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-          <input type="text" class="form-control" name="nayttelija3" value="<?php if(!empty($data->arvot->nayttelija3)): ?><?php echo htmlspecialchars($data->arvot->nayttelija3); ?><?php endif; ?>" placeholder="näyttelijä">
+          <input type="text" class="form-control" name="nayttelija3" value="<?php echo htmlspecialchars($data->arvot->getNayttelija3()); ?>" placeholder="näyttelijä">
         </div>
       </div>
       <div class="form-group">
         <label for="ohjaaja" class="col-md-2 control-label">Ohjaaja</label>
         <div class="col-md-10">
-          <input type="text" class="form-control" name="ohjaaja1" value="<?php if(!empty($data->arvot->ohjaaja1)): ?><?php echo htmlspecialchars($data->arvot->ohjaaja1); ?><?php endif; ?>" placeholder="ohjaaja">
+          <input type="text" class="form-control" name="ohjaaja1" value="<?php echo htmlspecialchars($data->arvot->getOhjaaja1()); ?>" placeholder="ohjaaja">
         </div>
       </div>
       <div class="form-group">
         <label for="ohjaaja" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-          <input type="text" class="form-control" name="ohjaaja2" value="<?php if(!empty($data->arvot->ohjaaja2)): ?><?php echo htmlspecialchars($data->arvot->ohjaaja2); ?><?php endif; ?>" placeholder="ohjaaja">
+          <input type="text" class="form-control" name="ohjaaja2" value="<?php echo htmlspecialchars($data->arvot->getOhjaaja2()); ?>" placeholder="ohjaaja">
         </div>
       </div>
       <div class="form-group">
         <label for="ohjaaja" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-          <input type="text" class="form-control" name="ohjaaja3" value="<?php if(!empty($data->arvot->ohjaaja3)): ?><?php echo htmlspecialchars($data->arvot->ohjaaja3); ?><?php endif; ?>" placeholder="ohjaaja">
+          <input type="text" class="form-control" name="ohjaaja3" value="<?php echo htmlspecialchars($data->arvot->getOhjaaja3()); ?>" placeholder="ohjaaja">
         </div>
       </div>
       <div class="form-group">
         <label for="kategoria" class="col-md-2 control-label">Kategoria</label>
         <div class="col-md-10">
-          <input type="text" class="form-control" name="kategoria1" value="<?php if(!empty($data->arvot->kategoria1)): ?><?php echo htmlspecialchars($data->arvot->kategoria1); ?><?php endif; ?>" placeholder="kategoria">
+          <input type="text" class="form-control" name="kategoria1" value="<?php echo htmlspecialchars($data->arvot->getKategoria1()); ?>" placeholder="kategoria">
         </div>
       </div>
       <div class="form-group">
         <label for="kategoria" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-          <input type="text" class="form-control" name="kategoria2" value="<?php if(!empty($data->arvot->kategoria2)): ?><?php echo htmlspecialchars($data->arvot->kategoria2); ?><?php endif; ?>" placeholder="kategoria">
+          <input type="text" class="form-control" name="kategoria2" value="<?php echo htmlspecialchars($data->arvot->getKategoria2()); ?>" placeholder="kategoria">
         </div>
       </div>
       <div class="form-group">
         <label for="kategoria" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-          <input type="text" class="form-control" name="kategoria3" value="<?php if(!empty($data->arvot->kategoria3)): ?><?php echo htmlspecialchars($data->arvot->kategoria3); ?><?php endif; ?>" placeholder="kategoria">
+          <input type="text" class="form-control" name="kategoria3" value="<?php echo htmlspecialchars($data->arvot->getKategoria3()); ?>" placeholder="kategoria">
         </div>
       </div>
       <div class="form-group">

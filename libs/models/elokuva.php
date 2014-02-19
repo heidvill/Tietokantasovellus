@@ -12,7 +12,6 @@ class Elokuva {
 	private $maa;
 	private $nahty;
 	private $virheet;
-	private $arvot;
 	private $nayttelija1;
 	private $nayttelija2;
 	private $nayttelija3;
@@ -25,24 +24,26 @@ class Elokuva {
 	
 	public function setNimi($nimi){
 		$this->nimi = $nimi;
-		$this->arvot['nimi'] = $nimi;
 		
 		if(trim($this->nimi) ==''){
 			$this->virheet['nimi'] = "Nimi ei saa olla tyhjä!";
-		}else{
+		}else if(strlen(trim($this->nimi)) >100){
+			$this->virheet['nimi'] = "Nimi ei saa olla yli 100 merkkiä!";
+		} else{
 			unset($this->virheet['nimi']);	
 		}	
 	}
 	
 	public function setKesto($kesto){
 		$this->kesto = $kesto;
-		$this->arvot['kesto'] = $kesto;
 		
 		if(!is_numeric($kesto) && $kesto!=''){
 			$this->virheet['kesto'] = "Kesto pitää antaa numeroina!";
 		} else if(!is_numeric($kesto)){
 			$this->kesto = null;
 			unset($this->virheet['kesto']);
+		} else if($this->kesto >=10000){
+			$this->virheet['kesto'] = "Kesto voi olla vain 4 merkkiä pitkä!";
 		} else {
 			unset($this->virheet['kesto']);
 		}
@@ -51,7 +52,6 @@ class Elokuva {
 	
 	public function setIkaraja($ikaraja){
 		$this->ikaraja = $ikaraja;
-		$this->arvot['ika'] = $ikaraja;
 		
 		if(strlen(trim($this->ikaraja)) >3){
 			$this->virheet['ika'] = "Ikäraja saa olla vain kolme merkkiä pitkä!";
@@ -62,13 +62,14 @@ class Elokuva {
 	
 	public function setVuosi($vuosi){
 		$this->vuosi = $vuosi;
-		$this->arvot['vuosi'] = $vuosi;
 		
 		if(!is_numeric($vuosi) && $vuosi!=''){
 			$this->virheet['vuosi'] = "Vuosi pitää antaa numeroina!";
 		} else if(!is_numeric($vuosi)){
 			$this->vuosi = null;
 			unset($this->virheet['vuosi']);
+		}  else if($this->vuosi >=10000){
+			$this->virheet['vuosi'] = "Vuosiluvussa voi olla vain 4 merkkiä!";
 		} else {
 			unset($this->virheet['vuosi']);
 		}
@@ -76,44 +77,68 @@ class Elokuva {
 	
 	public function setKieli($kieli){
 		$this->kieli = $kieli;
-		$this->arvot['kieli'] = $kieli;
+
+		if(strlen(trim($this->kieli)) >100){
+			$this->virheet['kieli'] = "Kielitiedot voivat olla 100 merkkiä!";
+		} else {
+			unset($this->virheet['kieli']);
+		}
 	}
 	
 	public function setMaa($maa){
 		$this->maa = $maa;
-		$this->arvot['maa'] = $maa;
+
+		if(strlen(trim($this->maa)) >100){
+			$this->virheet['maa'] = "Maatiedot voivat olla 100 merkkiä!";
+		} else {
+			unset($this->virheet['maa']);
+		}
 	}
 	
 	public function setNahty($nahty){
 		$this->nahty = $nahty;
-		$this->arvot['nahty'] = $nahty;
+
+		if(strlen(trim($this->nahty)) >20){
+			$this->virheet['nahty'] = "Nähtykentän syöte voi olla 20 merkkiä!";
+		} else {
+			unset($this->virheet['nahty']);
+		}
 	}
 	
 	public function asetaNayttelijat($n1, $n2, $n3){
 		$this->nayttelija1 = $n1;
 		$this->nayttelija2 = $n2;
 		$this->nayttelija3 = $n3;
-		$this->arvot['nayttelija1'] = $n1;
-		$this->arvot['nayttelija2'] = $n2;
-		$this->arvot['nayttelija3'] = $n3;
+		if(strlen(trim($this->nayttelija1)) >50 || strlen(trim($this->nayttelija2)) >50 || strlen(trim($this->nayttelija3)) >50){
+			$this->virheet['nayttelija'] = "Näyttelijän nimi voi olla 50 merkkiä!";
+		} else {
+			unset($this->virheet['nayttelija']);
+		}
+		
 	}
 	
 	public function asetaOhjaajat($o1, $o2, $o3){
 		$this->ohjaaja1 = $o1;
 		$this->ohjaaja2 = $o2;
 		$this->ohjaaja2 = $o3;
-		$this->arvot['ohjaaja1'] = $o1;
-		$this->arvot['ohjaaja2'] = $o2;
-		$this->arvot['ohjaaja3'] = $o3;
+
+		if(strlen(trim($this->ohjaaja1)) >50 || strlen(trim($this->ohjaaja2)) >50 || strlen(trim($this->ohjaaja3)) >50){
+			$this->virheet['ohjaaja'] = "Ohjaajan nimi voi olla 50 merkkiä!";
+		} else {
+			unset($this->virheet['ohjaaja']);
+		}
 	}
 	
 	public function asetaKategoriat($k1, $k2, $k3){
 		$this->kategoria1 = $k1;
 		$this->kategoria2 = $k2;
 		$this->kategoria3 = $k3;
-		$this->arvot['kategoria1'] = $k1;
-		$this->arvot['kategoria2'] = $k2;
-		$this->arvot['kategoria3'] = $k3;
+
+		if(strlen(trim($this->kategoria1)) >50 || strlen(trim($this->kategoria2)) >50 || strlen(trim($this->kategoria3)) >30){
+			$this->virheet['kategoria'] = "Näyttelijän nimi voi olla 30 merkkiä!";
+		} else {
+			unset($this->virheet['kategoria']);
+		}
 	}
 	
 	public function getNimi(){
@@ -204,11 +229,6 @@ class Elokuva {
 		return $this->virheet;
 	}
 	
-	public function getArvot(){
-		return $this->arvot;
-	}
-	
-	
 	public static function etsiElokuva($id){
 		$sql = "SELECT *
 				FROM elokuva
@@ -229,7 +249,7 @@ class Elokuva {
 			$elokuva->kieli = $tulos->kieli;
 			$elokuva->maa = $tulos->maa;
 			$elokuva->nahty = $tulos->nahty;
-			
+
 			$nayttelijat = self::etsiNayttelijat($elokuva->id);
 			
 			$elokuva->nayttelija1 = $nayttelijat[0];

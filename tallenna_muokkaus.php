@@ -38,9 +38,9 @@
 		elokuva::tallennaMuokattuOhjaus($elokuva, $_POST['ohjaaja1'], $_POST['ohjaaja2'], $_POST['ohjaaja3']);
 		elokuva::tallennaMuokattuLuokitus($elokuva, $_POST['kategoria1'],$_POST['kategoria2'],$_POST['kategoria3']);
 		$tulos=elokuva::haeKaikki();
+		$_SESSION['ilmoitus'] = "Elokuva tallennettiin onnistuneesti!";
 		lahetaSivulle("etusivu.php", array('tulos'=>$tulos));
 	}else{
 		$virheet = $elokuva->getVirheet();
-		$arvot = $elokuva;
-		naytaNakyma("elokuvan_tiedot.php", array('virheet'=>$virheet, 'tulos'=>$arvot), 'Muokkaa elokuvaa');
+		naytaNakyma("elokuvan_tiedot.php", array('virheet'=>$virheet, 'tulos'=>$elokuva), 'Muokkaa elokuvaa');
 	}

@@ -33,6 +33,7 @@
 		elokuva::setKategoria($_POST['kategoria1'], $uusiE->getId());
 		elokuva::setKategoria($_POST['kategoria2'], $uusiE->getId());
 		elokuva::setKategoria($_POST['kategoria3'], $uusiE->getId());
+		$_SESSION['ilmoitus'] = "Uusi elokuva lisättiin onnistuneesti!";
 		lahetaSivulle("etusivu.php");
 	}else{
 		$virheet = $uusiE->getVirheet();
