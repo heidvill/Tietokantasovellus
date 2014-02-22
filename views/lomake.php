@@ -111,8 +111,11 @@
       <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
           <button type="submit" class="btn btn-default">Tallenna</button>
-           <button type="reset" class="btn btn-default">Tyhjennä kentät</button>
         </div>
       </div>
       </form>
+	<form class="form-horizontal" role="form" action="lisaa_elokuva.php" method="POST">
+		<button type="submit" class="btn btn-default">Tyhjennä kentät</button>
+	</form>
   </div>
+  <br>

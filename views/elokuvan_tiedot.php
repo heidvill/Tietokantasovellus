@@ -112,7 +112,6 @@
         <div class="col-md-offset-2 col-md-10">
         <input type="hidden" value="<?php echo htmlspecialchars($data->tulos->getId()); ?>" name="talletettava">
           <button type="submit" class="btn btn-default">Tallenna</button>
-          <button type="reset" class="btn btn-default">Tyhjennä kentät</button>
         </div>
       </div>
       </form>
@@ -121,7 +120,7 @@
       	<div class="form-group">
       		<div class="col-md-offset-2 col-md-10">
       			<input type="hidden" value="<?php echo htmlspecialchars($data->tulos->getId()); ?>" name="poistettava">
-  				<button type="submit" class="btn btn-default">Poista</button>
+  				<button type="submit" class="btn btn-default">Poista elokuva</button>
   			</div>
      	 </div>
       </form>

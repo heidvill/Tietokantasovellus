@@ -12,5 +12,4 @@
 	elokuva::poistaElokuva($poistettava);
 
 	$_SESSION['ilmoitus'] = "Elokuva poistettiin onnistuneesti!";
-	$tulos=elokuva::haeKaikki();
 	lahetaSivulle("etusivu.php");

@@ -20,7 +20,7 @@
       <div class="form-group">
         <label for="tunnus" class="col-md-2 control-label">Käyttäjätunnus</label>
         <div class="col-md-10">
-          <input type="text" class="form-control" name="tunnus" value="<?php if(!empty($data->kayttaja)): ?><?php echo $data->kayttaja; ?><?php endif; ?>" placeholder="Käyttäjätunnus" />
+          <input type="text" class="form-control" name="tunnus" value="<?php if(!empty($data->kayttaja)): ?><?php echo htmlspecialchars($data->kayttaja); ?><?php endif; ?>" placeholder="Käyttäjätunnus" />
         </div>
       </div>
       <div class="form-group">
